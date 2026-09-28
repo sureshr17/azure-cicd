@@ -51,5 +51,5 @@ jobs:
         with:
           app-name: 'app-suresh'
           slot-name: 'Production'
-          package: dist/my-angular-app/browser
+          package: dist/azure-deploymanual/browser
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B579EE49E77040DC9DEDF40103D686A4 }}
