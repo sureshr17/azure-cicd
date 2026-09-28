@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: dist/azure-deploymanual/browser
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,5 +51,5 @@ jobs:
         with:
           app-name: 'app-suresh'
           slot-name: 'Production'
-          package: .
+          package: dist/my-angular-app/browser
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B579EE49E77040DC9DEDF40103D686A4 }}
