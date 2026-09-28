@@ -1,0 +1,12 @@
+[
+  { "id": 1, "name": "Avery Morgan", "email": "avery.morgan@example.com", "phone": "+1-206-555-0101", "city": "Seattle", "department": "Engineering" },
+  { "id": 2, "name": "Jordan Lee", "email": "jordan.lee@example.com", "phone": "+1-415-555-0102", "city": "San Francisco", "department": "Design" },
+  { "id": 3, "name": "Casey Patel", "email": "casey.patel@example.com", "phone": "+1-312-555-0103", "city": "Chicago", "department": "Marketing" },
+  { "id": 4, "name": "Riley Chen", "email": "riley.chen@example.com", "phone": "+1-512-555-0104", "city": "Austin", "department": "Finance" },
+  { "id": 5, "name": "Taylor Brooks", "email": "taylor.brooks@example.com", "phone": "+1-617-555-0105", "city": "Boston", "department": "People" },
+  { "id": 6, "name": "Quinn Rivera", "email": "quinn.rivera@example.com", "phone": "+1-303-555-0106", "city": "Denver", "department": "Sales" },
+  { "id": 7, "name": "Morgan Davis", "email": "morgan.davis@example.com", "phone": "+1-404-555-0107", "city": "Atlanta", "department": "Engineering" },
+  { "id": 8, "name": "Jamie Kim", "email": "jamie.kim@example.com", "phone": "+1-212-555-0108", "city": "New York", "department": "Operations" },
+  { "id": 9, "name": "Alex Thompson", "email": "alex.thompson@example.com", "phone": "+1-503-555-0109", "city": "Portland", "department": "Design" },
+  { "id": 10, "name": "Sam Wilson", "email": "sam.wilson@example.com", "phone": "+1-801-555-0110", "city": "Salt Lake City", "department": "Customer Success" }
+]

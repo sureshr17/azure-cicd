@@ -1,0 +1,89 @@
+<main class="page-shell">
+  <a class="back-link" routerLink="/users">Back to users</a>
+
+  <header class="page-header">
+    <p class="eyebrow">PEOPLE / DIRECTORY / EDIT</p>
+    <h1>Edit user</h1>
+    <p class="intro">Update this user's contact and organization details.</p>
+  </header>
+
+  @if (loading) {
+    <section class="form-panel loading-state" role="status">Loading user details...</section>
+  } @else if (errorMessage && !form.dirty) {
+    <section class="form-panel error-panel" role="alert">
+      <p>{{ errorMessage }}</p>
+      <a class="back-link" routerLink="/users">Return to user list</a>
+    </section>
+  } @else {
+    <form class="form-panel" [formGroup]="form" (ngSubmit)="save()" novalidate>
+      <div class="form-heading">
+        <div>
+          <h2>User information</h2>
+          <p>All fields are required.</p>
+        </div>
+        <span class="required-note"><span aria-hidden="true">*</span> Required</span>
+      </div>
+
+      <div class="form-grid">
+        <label class="field">
+          <span>User ID <span class="required" aria-hidden="true">*</span></span>
+          <input formControlName="id" type="number" min="1" step="1" inputmode="numeric" />
+          @if (form.controls.id.touched && form.controls.id.invalid) {
+            <small class="field-error">Enter a valid user ID.</small>
+          }
+        </label>
+
+        <label class="field">
+          <span>Full name <span class="required" aria-hidden="true">*</span></span>
+          <input formControlName="name" type="text" autocomplete="name" />
+          @if (form.controls.name.touched && form.controls.name.invalid) {
+            <small class="field-error">Name is required.</small>
+          }
+        </label>
+
+        <label class="field field-wide">
+          <span>Email address <span class="required" aria-hidden="true">*</span></span>
+          <input formControlName="email" type="email" autocomplete="email" />
+          @if (form.controls.email.touched && form.controls.email.invalid) {
+            <small class="field-error">Enter a valid email address.</small>
+          }
+        </label>
+
+        <label class="field">
+          <span>Phone <span class="required" aria-hidden="true">*</span></span>
+          <input formControlName="phone" type="tel" autocomplete="tel" />
+          @if (form.controls.phone.touched && form.controls.phone.invalid) {
+            <small class="field-error">Phone is required.</small>
+          }
+        </label>
+
+        <label class="field">
+          <span>City <span class="required" aria-hidden="true">*</span></span>
+          <input formControlName="city" type="text" autocomplete="address-level2" />
+          @if (form.controls.city.touched && form.controls.city.invalid) {
+            <small class="field-error">City is required.</small>
+          }
+        </label>
+
+        <label class="field field-wide">
+          <span>Department <span class="required" aria-hidden="true">*</span></span>
+          <input formControlName="department" type="text" />
+          @if (form.controls.department.touched && form.controls.department.invalid) {
+            <small class="field-error">Department is required.</small>
+          }
+        </label>
+      </div>
+
+      @if (errorMessage) {
+        <p class="form-error" role="alert">{{ errorMessage }}</p>
+      }
+
+      <div class="form-actions">
+        <a class="cancel-button" routerLink="/users">Cancel</a>
+        <button class="save-button" type="submit" [disabled]="saving">
+          {{ saving ? 'Saving...' : 'Save changes' }}
+        </button>
+      </div>
+    </form>
+  }
+</main>
