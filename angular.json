@@ -61,8 +61,10 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular/build:unit-test",
+          "builder": "@angular/build:karma",
           "options": {
+            "codeCoverage": true,
+            "karmaConfig": "karma.conf.js",
             "tsConfig": "tsconfig.spec.json"
           }
         }
