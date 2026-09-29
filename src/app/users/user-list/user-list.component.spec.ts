@@ -13,6 +13,7 @@ const users: User[] = [
     phone: '555-0100',
     city: 'London',
     department: 'Engineering',
+    photoUrl: 'data:image/png;base64,YWRh',
   },
   {
     id: 2,
@@ -75,6 +76,26 @@ describe('UserListComponent', () => {
     expect(element.textContent).toContain('Engineering');
     expect(editLink?.getAttribute('href')).toBe('/users/edit/1');
     expect(element.textContent).toContain('2 records');
+  });
+
+  it('should render profile photos and initials when no photo is set', () => {
+    createComponent();
+
+    const element = fixture.nativeElement as HTMLElement;
+    const photo = element.querySelector('.user-avatar[src]') as HTMLImageElement;
+    const initial = element.querySelector('.avatar-initial');
+
+    expect(photo.getAttribute('src')).toBe('data:image/png;base64,YWRh');
+    expect(photo.alt).toBe('Ada Lovelace profile photo');
+    expect(initial?.textContent?.trim()).toBe('G');
+  });
+
+  it('should link to the current add-user route', () => {
+    createComponent();
+
+    const addUserLink = fixture.nativeElement.querySelector('.add-user-link') as HTMLAnchorElement;
+
+    expect(addUserLink.getAttribute('href')).toBe('/users/add');
   });
 
   it('should render the empty state when there are no users', () => {

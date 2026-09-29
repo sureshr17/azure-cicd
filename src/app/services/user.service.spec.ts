@@ -74,13 +74,14 @@ describe('UserService', () => {
     expect(result).toEqual(users[1]);
   });
 
-  it('should add a user with the next available ID', () => {
+  it('should add a user with the next ID and preserve the profile photo', () => {
     const userDetails = {
       name: 'Katherine Johnson',
       email: 'katherine@example.com',
       phone: '555-0102',
       city: 'Hampton',
       department: 'Research',
+      photoUrl: 'data:image/png;base64,a2F0aGVyaW5l',
     };
     let result: User | undefined;
     service.addUser(userDetails).subscribe((user) => (result = user));
@@ -91,7 +92,12 @@ describe('UserService', () => {
   });
 
   it('should update an existing user using the original ID', () => {
-    const updatedUser = { ...users[0], id: 3, name: 'Augusta King' };
+    const updatedUser = {
+      ...users[0],
+      id: 3,
+      name: 'Augusta King',
+      photoUrl: 'data:image/png;base64,YXVndXN0YQ==',
+    };
     let result: User | undefined;
     service.updateUser(updatedUser, users[0].id).subscribe((updated) => (result = updated));
     respondWithUsers();

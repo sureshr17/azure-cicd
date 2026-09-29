@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { ProfileUploadComponent } from '../profile-upload/profile-upload.component';
 import { UserCreateComponent } from './user-create.component';
 
 const createdUser: User = {
@@ -71,6 +73,31 @@ describe('UserCreateComponent', () => {
     });
     expect(router.navigate).toHaveBeenCalledWith(['/users'], {
       state: { successMessage: 'Katherine Johnson was added successfully.' },
+    });
+  });
+
+  it('should include a selected profile photo when adding a user', () => {
+    const photoUrl = 'data:image/png;base64,aW1hZ2U=';
+    const uploader = fixture.debugElement.query(By.directive(ProfileUploadComponent))
+      .componentInstance as ProfileUploadComponent;
+    fixture.componentInstance.form.setValue({
+      name: 'Katherine Johnson',
+      email: 'katherine@example.com',
+      phone: '555-0102',
+      city: 'Hampton',
+      department: 'Research',
+    });
+
+    uploader.imageUrlChange.emit(photoUrl);
+    fixture.componentInstance.save();
+
+    expect(userService.addUser).toHaveBeenCalledWith({
+      name: 'Katherine Johnson',
+      email: 'katherine@example.com',
+      phone: '555-0102',
+      city: 'Hampton',
+      department: 'Research',
+      photoUrl,
     });
   });
 });
