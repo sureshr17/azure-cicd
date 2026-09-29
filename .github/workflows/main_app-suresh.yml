@@ -17,6 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js version
         uses: actions/setup-node@v3
@@ -28,6 +30,12 @@ jobs:
 
       - name: run unit tests
         run: npm run test
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Build production app
         run: npm run prod
