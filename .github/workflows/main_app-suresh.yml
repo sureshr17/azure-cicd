@@ -32,12 +32,12 @@ jobs:
         run: npm run test
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-      - name: Build production app
+      - name: Build App
         run: npm run prod
 
       - name: Upload artifact for deployment job
