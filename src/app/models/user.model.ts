@@ -5,4 +5,5 @@ export interface User {
   phone: string;
   city: string;
   department: string;
+  photoUrl?: string;
 }

@@ -1,0 +1,24 @@
+:host { display: block; }
+.profile-upload { display: flex; align-items: center; gap: 16px; padding: 20px 0; border-bottom: 1px solid #e7ece8; }
+.preview-frame { display: grid; width: 72px; height: 72px; flex: 0 0 72px; place-items: center; overflow: hidden; border: 1px solid #dce5df; border-radius: 50%; background: #f2f6f2; }
+.preview-image { width: 100%; height: 100%; object-fit: cover; }
+.preview-placeholder { color: #56776b; font-size: 28px; font-weight: 300; line-height: 1; }
+.upload-content { display: flex; min-width: 0; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; flex: 1; }
+h3, p { margin: 0; }
+h3 { color: #29423c; font-size: 13px; font-weight: 700; }
+.upload-content > div:first-child p { margin-top: 5px; color: #819089; font-size: 11px; }
+.upload-actions { display: flex; align-items: center; gap: 13px; }
+.choose-image { position: relative; display: inline-flex; min-height: 36px; align-items: center; padding: 0 12px; border: 1px solid #24584a; border-radius: 3px; background: #24584a; color: #fff; font-size: 12px; font-weight: 700; cursor: pointer; }
+.choose-image:hover { border-color: #184437; background: #184437; }
+.choose-image:focus-within { outline: 3px solid rgb(86 132 119 / 25%); outline-offset: 2px; }
+.file-input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.remove-image { padding: 6px 0; border: 0; background: transparent; color: #a54e37; font: inherit; font-size: 12px; font-weight: 650; cursor: pointer; }
+.remove-image:hover { color: #7c3827; text-decoration: underline; text-underline-offset: 3px; }
+.upload-error { width: 100%; color: #a54e37; font-size: 11px; }
+
+@media (max-width: 520px) {
+  .profile-upload { align-items: flex-start; gap: 13px; }
+  .preview-frame { width: 60px; height: 60px; flex-basis: 60px; }
+  .upload-content { align-items: flex-start; flex-direction: column; }
+  .upload-actions { flex-wrap: wrap; }
+}

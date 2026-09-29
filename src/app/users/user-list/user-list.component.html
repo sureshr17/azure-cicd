@@ -42,7 +42,16 @@
             @for (user of users; track user.id) {
               <tr>
                 <td class="id-cell">{{ user.id }}</td>
-                <td class="name-cell">{{ user.name }}</td>
+                <td class="name-cell">
+                  <span class="user-name">
+                    @if (user.photoUrl) {
+                      <img class="user-avatar" [src]="user.photoUrl" [alt]="user.name + ' profile photo'" />
+                    } @else {
+                      <span class="user-avatar avatar-initial" aria-hidden="true">{{ user.name.charAt(0).toUpperCase() }}</span>
+                    }
+                    {{ user.name }}
+                  </span>
+                </td>
                 <td><a class="email-link" [href]="'mailto:' + user.email">{{ user.email }}</a></td>
                 <td>{{ user.phone }}</td>
                 <td>{{ user.city }}</td>

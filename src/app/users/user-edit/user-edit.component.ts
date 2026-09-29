@@ -1,13 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ProfileUploadComponent } from '../profile-upload/profile-upload.component';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ProfileUploadComponent, ReactiveFormsModule, RouterLink],
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.css',
 })
@@ -29,6 +30,7 @@ export class UserEditComponent {
   loading = true;
   saving = false;
   errorMessage = '';
+  photoUrl: string | null = null;
   private originalId = 0;
 
   constructor() {
@@ -48,6 +50,7 @@ export class UserEditComponent {
           return;
         }
         this.form.patchValue(user);
+        this.photoUrl = user.photoUrl ?? null;
       },
       error: () => {
         this.loading = false;
@@ -64,7 +67,9 @@ export class UserEditComponent {
 
     this.saving = true;
     this.errorMessage = '';
-    const updatedUser: User = this.form.getRawValue();
+    const updatedUser: User = this.photoUrl
+      ? { ...this.form.getRawValue(), photoUrl: this.photoUrl }
+      : this.form.getRawValue();
     this.userService.updateUser(updatedUser, this.originalId).subscribe({
       next: () => {
         this.router.navigate(['/users'], {

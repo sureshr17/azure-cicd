@@ -1,0 +1,34 @@
+<section class="profile-upload" aria-label="Profile picture">
+  <div class="preview-frame">
+    @if (imageUrl) {
+      <img class="preview-image" [src]="imageUrl" alt="Profile picture preview" />
+    } @else {
+      <span class="preview-placeholder" aria-hidden="true">+</span>
+    }
+  </div>
+
+  <div class="upload-content">
+    <div>
+      <h3>Profile picture</h3>
+      <p>Choose an image up to 5 MB.</p>
+    </div>
+    <div class="upload-actions">
+      <label class="choose-image">
+        <input
+          #fileInput
+          class="file-input"
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+        />
+        <span>{{ imageUrl ? 'Change image' : 'Choose image' }}</span>
+      </label>
+      @if (imageUrl) {
+        <button class="remove-image" type="button" (click)="removeImage(fileInput)">Remove</button>
+      }
+    </div>
+    @if (errorMessage) {
+      <p class="upload-error" role="alert">{{ errorMessage }}</p>
+    }
+  </div>
+</section>

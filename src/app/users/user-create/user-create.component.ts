@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ProfileUploadComponent } from '../profile-upload/profile-upload.component';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-create',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ProfileUploadComponent, ReactiveFormsModule, RouterLink],
   templateUrl: './user-create.component.html',
   styleUrl: './user-create.component.css',
 })
@@ -25,6 +26,7 @@ export class UserCreateComponent {
 
   saving = false;
   errorMessage = '';
+  photoUrl: string | null = null;
 
   save(): void {
     if (this.form.invalid) {
@@ -34,7 +36,10 @@ export class UserCreateComponent {
 
     this.saving = true;
     this.errorMessage = '';
-    this.userService.addUser(this.form.getRawValue()).subscribe({
+    const userDetails = this.photoUrl
+      ? { ...this.form.getRawValue(), photoUrl: this.photoUrl }
+      : this.form.getRawValue();
+    this.userService.addUser(userDetails).subscribe({
       next: (user) => {
         this.router.navigate(['/users'], {
           state: { successMessage: `${user.name} was added successfully.` },

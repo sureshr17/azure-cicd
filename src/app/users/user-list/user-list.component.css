@@ -24,6 +24,9 @@ td { height: 62px; padding: 10px 17px; border-top: 1px solid #edf1ee; color: #59
 tbody tr:hover { background: #f9fbf9; }
 .id-cell { color: #98a69f; font-variant-numeric: tabular-nums; }
 .name-cell { color: #29423c; font-weight: 650; }
+.user-name { display: inline-flex; align-items: center; gap: 10px; }
+.user-avatar { display: block; width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; object-fit: cover; }
+.avatar-initial { display: grid; place-items: center; background: #e9f0eb; color: #386353; font-size: 12px; font-weight: 700; }
 .email-link { color: #45766c; text-decoration: none; }
 .email-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .department { display: inline-block; padding: 5px 9px; border-radius: 3px; background: #eef4ef; color: #476a5d; font-size: 11px; }
