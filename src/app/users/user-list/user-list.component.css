@@ -12,6 +12,10 @@ h1 { margin-bottom: 10px; color: #183b36; font-family: Georgia, 'Times New Roman
 .table-heading { display: flex; align-items: center; justify-content: space-between; min-height: 89px; padding: 20px 25px; border-bottom: 1px solid #e5ebe7; }
 .table-heading h2 { margin-bottom: 5px; color: #24423c; font-size: 17px; font-weight: 700; }
 .table-heading p { margin-bottom: 0; color: #82908b; font-size: 12px; }
+.table-tools { display: flex; align-items: center; gap: 22px; }
+.add-user-link { display: inline-flex; min-height: 38px; align-items: center; gap: 8px; padding: 0 13px; border: 1px solid #24584a; border-radius: 3px; background: #24584a; color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; }
+.add-user-link:hover { border-color: #184437; background: #184437; }
+.add-user-link span { font-size: 17px; font-weight: 400; line-height: 1; }
 .table-mark { color: #c6d5ce; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; }
 .table-scroll { overflow-x: auto; }
 table { width: 100%; min-width: 970px; border-collapse: collapse; text-align: left; }
@@ -35,5 +39,8 @@ tbody tr:hover { background: #f9fbf9; }
   .page-header { align-items: flex-start; flex-direction: column; gap: 16px; margin-bottom: 26px; }
   h1 { font-size: 34px; }
   .table-heading { min-height: 76px; padding: 16px; }
+  .table-tools { gap: 10px; }
+  .table-mark { display: none; }
+  .add-user-link { min-height: 36px; padding: 0 10px; }
   .table-footer { padding: 14px 16px; }
 }

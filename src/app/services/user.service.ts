@@ -17,6 +17,19 @@ export class UserService {
     return this.getAllUsers().pipe(map((users) => users.find((user) => user.id === id)));
   }
 
+  addUser(userDetails: Omit<User, 'id'>): Observable<User> {
+    return this.getAllUsers().pipe(
+      map((users) => {
+        const user: User = {
+          ...userDetails,
+          id: Math.max(0, ...users.map((currentUser) => currentUser.id)) + 1,
+        };
+        this.users = [...users, user];
+        return { ...user };
+      }),
+    );
+  }
+
   updateUser(user: User, originalId: number = user.id): Observable<User> {
     return this.getAllUsers().pipe(
       map((users) => {

@@ -18,7 +18,10 @@
         <h2>All users</h2>
         <p>Contact and department details</p>
       </div>
-      <span class="table-mark" aria-hidden="true">01</span>
+      <div class="table-tools">
+        <a class="add-user-link" routerLink="/users/new"><span aria-hidden="true">+</span> Add user</a>
+        <span class="table-mark" aria-hidden="true">01</span>
+      </div>
     </div>
 
     @if (users$ | async; as users) {

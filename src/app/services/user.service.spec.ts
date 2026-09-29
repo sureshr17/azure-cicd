@@ -74,6 +74,22 @@ describe('UserService', () => {
     expect(result).toEqual(users[1]);
   });
 
+  it('should add a user with the next available ID', () => {
+    const userDetails = {
+      name: 'Katherine Johnson',
+      email: 'katherine@example.com',
+      phone: '555-0102',
+      city: 'Hampton',
+      department: 'Research',
+    };
+    let result: User | undefined;
+    service.addUser(userDetails).subscribe((user) => (result = user));
+    respondWithUsers();
+
+    expect(result).toEqual({ ...userDetails, id: 3 });
+    service.getAllUsers().subscribe((loadedUsers) => expect(loadedUsers.at(-1)).toEqual(result));
+  });
+
   it('should update an existing user using the original ID', () => {
     const updatedUser = { ...users[0], id: 3, name: 'Augusta King' };
     let result: User | undefined;
